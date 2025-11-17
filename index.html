@@ -1,90 +1,132 @@
-<!-- index.html (Halaman Utama) -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Website Ahmad Rayhan</title>
-<link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Saya - Rayhan</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-<h1>Selamat Datang di Website Saya</h1>
-<nav>
-<a href="index.html">Beranda</a>
-<a href="tentang.html">Tentang</a>
-<a href="pkl.html">PKL</a>
-<a href="tugas.html">Tugas</a>
-</nav>
-</header>
 
+    <header>
+        <nav>
+            <a href="#home">Beranda</a>
+            <a href="#about">Tentang Saya</a>
+            <a href="#tasks">Tugas</a>
+            <a href="#internship">Pengalaman PKL</a>
+            <a href="#contact">Kontak</a>
+        </nav>
+    </header>
 
-<section class="hero">
-<h2>Website Portfolio GitHub</h2>
-<p>Dibuat oleh Ahmad Rayhan</p>
-</section>
+    <main>
+        <section id="home" class="active">
+            <div class="profile-card">
+                <img src="WhatsApp Image 2025-10-27 at 11.30.27.jpg" alt="Foto Profil Saya" class="profile-photo">
+                <h1>Rayhan</h1>
+                <p>Mahasiswa | Calon Teknisi Profesional</p>
+                <button onclick="changeTheme()">Ganti Tema (Terang/Gelap)</button>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>Tentang Saya</h2>
+            <p>Saya adalah seorang pelajar yang bersemangat dalam bidang teknologi. Saya memiliki minat besar dalam jaringan komputer, perbaikan perangkat keras, dan pemrograman dasar. Senang belajar hal baru dan siap menghadapi tantangan teknis.</p>
+            <p>Saat ini berfokus pada pengembangan diri sebagai teknisi yang handal.</p>
+        </section>
+
+        <section id="tasks">
+            <h2>Daftar Tugas & Proyek</h2>
+            <ul>
+                <li>
+                    <h3>Proyek 1: Simulasi Jaringan Sederhana</h3>
+                    <p>Membangun topologi jaringan menggunakan Cisco Packet Tracer dan konfigurasi dasar router.</p>
+                </li>
+                <li>
+                    <h3>Tugas 2: Dokumentasi Perbaikan Komputer</h3>
+                    <p>Menyusun langkah-langkah *troubleshooting* dan perbaikan umum pada sistem operasi Windows.</p>
+                </li>
+                <li>
+                    <h3>Proyek 3: Pembuatan Laporan PKL</h3>
+                    <p>Menganalisis dan menyusun pengalaman selama Praktik Kerja Lapangan (PKL).</p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="internship">
+            <h2>Pengalaman PKL (Praktik Kerja Lapangan)</h2>
+            <p>Saya mendapatkan pengalaman berharga sebagai teknisi jaringan dan instalasi. Berikut adalah dokumentasi pekerjaan di lapangan:</p>
+
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="rayhan pkl.jpg" alt="PKL Instalasi Kabel" loading="lazy">
+                    <p>Instalasi dan perbaikan kabel jaringan di ketinggian.</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="rayhan pkl tower.jpg" alt="PKL Pemasangan di Tower" loading="lazy">
+                    <p>Pekerjaan pada struktur tower telekomunikasi.</p>
+                </div>
+            </div>
+            
+            <blockquote>
+                "Pengalaman ini mengajarkan saya pentingnya keselamatan kerja dan ketelitian dalam instalasi."
+            </blockquote>
+        </section>
+
+        <section id="contact">
+            <h2>Hubungi Saya</h2>
+            <p>Tertarik untuk berkolaborasi atau ingin tahu lebih lanjut? Silakan hubungi saya melalui:</p>
+            <div class="contact-info">
+                <p><strong>Email:</strong> [Alamat Email Anda]</p>
+                <p><strong>LinkedIn:</strong> [Link LinkedIn Anda]</p>
+                <p><strong>WhatsApp:</strong> [Nomor WhatsApp Anda]</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Logika Navigasi Interaktif (Smooth Scroll dan Highlight)
+            const navLinks = document.querySelectorAll('nav a');
+            const sections = document.querySelectorAll('main section');
+
+            // Fungsi untuk menampilkan bagian yang aktif
+            function showSection(id) {
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.querySelector(id).classList.add('active');
+            }
+
+            // Atur event listener untuk klik navigasi
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    
+                    // Navigasi visual
+                    showSection(targetId);
+
+                    // Update URL tanpa reload (interaktif)
+                    history.pushState(null, '', targetId);
+                });
+            });
+
+            // Handle saat halaman dimuat (jika ada hash di URL)
+            const initialHash = window.location.hash || '#home';
+            showSection(initialHash);
+
+        });
+
+        // Logika Tema Terang/Gelap
+        function changeTheme() {
+            document.body.classList.toggle('dark-mode');
+            const button = document.querySelector('#home button');
+            if (document.body.classList.contains('dark-mode')) {
+                button.textContent = 'Ganti Tema (Mode Terang)';
+            } else {
+                button.textContent = 'Ganti Tema (Mode Gelap)';
+            }
+        }
+    </script>
 </body>
-</html>
-
-
-<!-- tentang.html (Halaman Tentang) -->
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Tentang Saya</title>
-<link rel="stylesheet" href="style.css" />
-</head>
-<body>
-<header>
-<h1>Tentang Saya</h1>
-<nav>
-<a href="index.html">Beranda</a>
-<a href="tentang.html">Tentang</a>
-<a href="pkl.html">PKL</a>
-<a href="tugas.html">Tugas</a>
-</nav>
-</header>
-
-
-<section class="content">
-<h2>Profil Singkat</h2>
-<img src="WhatsApp Image 2025-10-27 at 11.30.27.jpg" class="foto" />
-<p>Halo, saya Ahmad Rayhan, pelajar SMK jurusan TKJ yang suka belajar teknologi dan bekerja di lapangan.</p>
-</section>
-</body>
-</html>
-
-
-<!-- pkl.html (Halaman PKL) -->
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>PKL</title>
-<link rel="stylesheet" href="style.css" />
-</head>
-<body>
-<header>
-<h1>Pengalaman PKL</h1>
-<nav>
-<a href="index.html">Beranda</a>
-<a href="tentang.html">Tentang</a>
-<a href="pkl.html">PKL</a>
-<a href="tugas.html">Tugas</a>
-</nav>
-</header>
-
-
-<section class="content">
-<h2>Dokumentasi PKL</h2>
-<p>Berikut adalah beberapa kegiatan PKL saya sebagai teknisi lapangan.</p>
-
-
-<img src="rayhan pkl.jpg" class="foto" />
-<img src="rayhan pkl tower.jpg" class="foto" />
-</body>
-</html>
 </html>
