@@ -1,41 +1,209 @@
-<!-- style.css -->
-<style>
+/* Atur ulang default browser */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #007bff; /* Biru */
+    --text-color: #333;
+    --bg-color: #f4f4f4;
+    --card-bg: #fff;
+    --border-color: #ddd;
+}
+
+/* Dark Mode Variables */
+.dark-mode {
+    --primary-color: #8ab4f8; /* Biru Muda untuk Dark Mode */
+    --text-color: #e8e8e8;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --border-color: #333;
+}
+
 body {
-margin: 0;
-font-family: Arial, sans-serif;
-background: #f0f0f0;
-color: #222;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
+
+/* Header dan Navigasi */
 header {
-background: #111;
-color: white;
-padding: 20px;
-text-align: center;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 nav a {
-color: white;
-margin: 0 10px;
-text-decoration: none;
-font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: 600;
 }
-.hero {
-padding: 60px;
-text-align: center;
-background: linear-gradient(#444, #111);
-color: white;
+
+nav a:hover {
+    background-color: var(--primary-color);
+    color: var(--card-bg);
 }
-.content {
-padding: 20px;
-background: white;
-margin: 20px;
-border-radius: 8px;
-box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+
+/* Konten Utama */
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 20px;
 }
-.foto {
-width: 100%;
-max-width: 350px;
-margin: 10px;
-border-radius: 8px;
-box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+
+section {
+    padding: 40px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed var(--border-color);
+    /* Awalnya semua section tersembunyi, hanya yang .active yang tampil */
+    display: none; 
+    animation: fadeIn 0.5s ease-out; /* Interaktif: Efek muncul */
 }
-</style>
+
+section:last-child {
+    border-bottom: none;
+}
+
+section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 10px;
+}
+
+/* Kartu Profil */
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 4px solid var(--primary-color);
+}
+
+.profile-card h1 {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+}
+
+.profile-card p {
+    color: #6a6a6a;
+}
+.dark-mode .profile-card p {
+    color: #a8a8a8;
+}
+
+/* Tombol Tema */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Galeri PKL */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.gallery-item {
+    background: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-item p {
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+/* Blockquote */
+blockquote {
+    border-left: 5px solid var(--primary-color);
+    padding: 10px 20px;
+    margin: 20px 0;
+    background-color: var(--border-color);
+    border-radius: 0 5px 5px 0;
+    font-style: italic;
+}
+.dark-mode blockquote {
+    background-color: #2a2a2a;
+}
+
+/* Kontak Info */
+.contact-info p {
+    margin: 5px 0;
+}
+
+/* Responsif */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 10px;
+    }
+    nav a {
+        text-align: center;
+        padding: 5px;
+    }
+}
