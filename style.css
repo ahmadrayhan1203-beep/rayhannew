@@ -1,116 +1,58 @@
-/* Atur ulang default browser */
-* {
-    box-sizing: border-box;
+/* Gaya Umum */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
-
-/* Variabel Default (Light Mode) */
-:root {
-    --primary-color: #007bff; /* Biru */
-    --text-color: #333;
-    --bg-color: #f4f4f4;
-    --card-bg: #fff;
-    --border-color: #ddd;
-}
-
-/* Dark Mode Variables */
-.dark-mode {
-    --primary-color: #8ab4f8; /* Biru Muda untuk Dark Mode */
-    --text-color: #e8e8e8;
-    --bg-color: #121212;
-    --card-bg: #1e1e1e;
-    --border-color: #333;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: #f4f4f4;
+    color: #333;
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Header dan Navigasi */
+/* Gaya Header dan Navigasi */
 header {
-    background-color: var(--card-bg);
-    border-bottom: 1px solid var(--border-color);
-    padding: 1rem 0;
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
     position: sticky;
     top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    z-index: 1000;
 }
 
 nav a {
-    color: var(--primary-color);
+    color: white;
     text-decoration: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-    font-weight: 600;
+    margin: 0 15px;
+    padding-bottom: 5px;
+    transition: color 0.3s;
 }
 
-nav a:hover {
-    background-color: var(--primary-color);
-    color: var(--card-bg);
+nav a:hover, nav a.active {
+    color: #ff9800;
 }
 
-/* Konten Utama */
+/* Gaya Main Content */
 main {
+    padding: 20px;
     max-width: 900px;
-    margin: 20px auto;
-    padding: 0 20px;
+    margin: 0 auto;
 }
 
 section {
-    padding: 40px 0;
-    margin-bottom: 20px;
-    border-bottom: 1px dashed var(--border-color);
-    /* Awalnya semua section tersembunyi, hanya yang .active yang tampil */
-    display: none; 
-    animation: fadeIn 0.5s ease-out; /* Interaktif: Efek muncul */
-}
-
-section:last-child {
-    border-bottom: none;
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none; /* Sembunyikan semua section secara default */
 }
 
 section.active {
-    display: block;
+    display: block; /* Tampilkan section yang aktif */
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-h2 {
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    border-left: 4px solid var(--primary-color);
-    padding-left: 10px;
-}
-
-/* Kartu Profil */
+/* Gaya Profil Card */
 .profile-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
-    background: var(--card-bg);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .profile-photo {
@@ -119,213 +61,208 @@ h2 {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 15px;
-    border: 4px solid var(--primary-color);
+    border: 4px solid #ff9800;
 }
 
-.profile-card h1 {
-    font-size: 2.5em;
-    margin-bottom: 5px;
+/* Gaya Tugas (Task Section) */
+.task-container {
+    padding: 10px;
 }
 
-.profile-card p {
-    color: #6a6a6a;
-}
-.dark-mode .profile-card p {
-    color: #a8a8a8;
-}
-
-/* Tombol Tema */
-button {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 10px 20px;
-    border: none;
+/* --- Gaya untuk Interactive Details (Penting!) --- */
+details {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    cursor: pointer;
-    margin-top: 15px;
+    padding: 10px;
+    background-color: #fafafa;
     transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #0056b3;
+details:hover {
+    background-color: #f0f0f0;
 }
 
-/* Galeri PKL */
+summary {
+    cursor: pointer;
+    outline: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    padding: 5px 0;
+    list-style: none; /* Hilangkan default arrow */
+    position: relative;
+}
+
+/* Ganti list-style menjadi simbol kustom */
+summary::before {
+    content: '▶'; /* Simbol tertutup */
+    margin-right: 10px;
+    transition: transform 0.2s;
+    display: inline-block;
+}
+
+details[open] > summary::before {
+    content: '▼'; /* Simbol terbuka */
+}
+
+/* Gaya Konten yang Dapat Digulir (Pilihan Ganda ASJ & AIJ) */
+.scrollable-content {
+    max-height: 400px; /* Batasi tinggi */
+    overflow-y: auto; /* Aktifkan scroll vertikal */
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+/* Gaya Tabel */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    font-size: 0.9em;
+}
+
+th {
+    background-color: #ff9800;
+    color: white;
+}
+
+.answer-asj {
+    background-color: #e0f7fa;
+}
+
+/* Gaya List AIJ */
+.aij-list li {
+    padding: 8px 0;
+    border-bottom: 1px dotted #ccc;
+}
+
+.aij-list .q {
+    font-weight: bold;
+    display: block;
+    color: #555;
+}
+
+.aij-list .a {
+    display: block;
+    margin-left: 15px;
+    color: #00796b;
+}
+
+/* Gaya Esai Section */
+.essay-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-left: 5px solid #2196f3;
+    background-color: #e3f2fd;
+    border-radius: 4px;
+}
+
+.essay-section h4 {
+    margin-top: 0;
+    color: #2196f3;
+}
+
+/* Gaya Gallery dan Blockquote */
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
     margin-top: 20px;
 }
 
 .gallery-item {
-    background: var(--card-bg);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex: 1;
+    min-width: 250px;
+    max-width: 40%;
     text-align: center;
 }
 
 .gallery-item img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.gallery-item p {
-    padding: 10px;
-    font-size: 0.9em;
-}
-
-/* Blockquote */
 blockquote {
-    border-left: 5px solid var(--primary-color);
+    border-left: 5px solid #ff9800;
     padding: 10px 20px;
     margin: 20px 0;
-    background-color: var(--border-color);
-    border-radius: 0 5px 5px 0;
+    background-color: #fffde7;
     font-style: italic;
 }
-.dark-mode blockquote {
-    background-color: #2a2a2a;
+
+/* Gaya Dark Mode */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
 }
 
-/* Kontak Info */
-.contact-info p {
-    margin: 5px 0;
+body.dark-mode header {
+    background-color: #2c2c2c;
 }
 
-/* Styling Khusus Tugas */
-.task-container h3 {
-    color: var(--text-color);
-    font-size: 1.5em;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid var(--primary-color);
+body.dark-mode nav a {
+    color: #e0e0e0;
 }
 
-/* Tabel ASJ */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    margin-bottom: 30px; 
-    background: var(--card-bg);
-    border-radius: 8px;
-    overflow: hidden;
+body.dark-mode section {
+    background-color: #2c2c2c;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
-th, td {
-    border: 1px solid var(--border-color);
-    padding: 12px;
-    text-align: left;
+
+body.dark-mode table, body.dark-mode th, body.dark-mode td {
+    border-color: #555;
 }
-th {
-    background-color: var(--primary-color);
+
+body.dark-mode th {
+    background-color: #ff9800;
+    color: #2c2c2c;
+}
+
+body.dark-mode .answer-asj {
+    background-color: #004d40;
     color: white;
-    border-color: var(--primary-color);
-}
-tr:nth-child(even) {
-    background-color: var(--bg-color); 
-}
-.dark-mode tr:nth-child(even) {
-    background-color: #2a2a2a; /* Warna gelap yang sedikit berbeda */
-}
-.answer-asj strong {
-    color: #ff5722; /* Warna merah/oranye untuk jawaban */
-    font-weight: 700;
-}
-.essay-section {
-    padding: 15px;
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    margin-bottom: 20px;
-    background-color: var(--card-bg);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-.essay-section h4 {
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
-.essay-section p {
-    margin-left: 0;
 }
 
-
-/* List AIJ */
-.aij-list {
-    list-style: none;
-    padding: 0;
-}
-.aij-list li{
-    margin:15px 0;
-    padding:16px;
-    border-radius:8px;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-.aij-list .q{
-    font-weight:600;
-    display:block;
-    margin-bottom:8px;
-    color: var(--text-color);
-}
-.aij-list .a{
-    margin-top:8px;
-    display:block;
-    color:var(--primary-color);
-    font-weight:700;
-}
-.aij-list .a strong {
-    color: #ff5722; /* Warna merah/oranye untuk jawaban */
+body.dark-mode details {
+    background-color: #3a3a3a;
+    border-color: #555;
 }
 
-/* Responsif */
-@media (max-width: 600px) {
-    nav {
-        flex-direction: column;
-        gap: 10px;
-        padding: 0 10px;
-    }
-    nav a {
-        text-align: center;
-        padding: 5px;
-    }
-    
-    /* Responsif Tabel ASJ */
-    th, td {
-        display: block;
-    }
-    thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-    tr { border: 1px solid var(--border-color); margin-bottom: 10px; }
-    td {
-        border: none;
-        border-bottom: 1px solid var(--border-color);
-        position: relative;
-        padding-left: 50%;
-        text-align: right;
-    }
-    td:before {
-        position: absolute;
-        top: 6px;
-        left: 6px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-        text-align: left;
-        font-weight: bold;
-        color: #6a6a6a;
-    }
-    .dark-mode td:before {
-        color: #a8a8a8;
-    }
-    td:nth-of-type(1):before { content: "No."; }
-    td:nth-of-type(2):before { content: "Pertanyaan"; }
-    td:nth-of-type(3):before { content: "Jawaban"; }
+body.dark-mode summary {
+    color: #e0e0e0;
+}
+
+body.dark-mode .essay-section {
+    background-color: #303f9f;
+    border-left-color: #7986cb;
+    color: #e0e0e0;
+}
+
+body.dark-mode .essay-section h4 {
+    color: #c5cae9;
+}
+
+body.dark-mode blockquote {
+    background-color: #424242;
+    border-left-color: #ffb74d;
+    color: #e0e0e0;
+}
+
+body.dark-mode .scrollable-content {
+    background-color: #2c2c2c;
+    border-color: #555;
 }
