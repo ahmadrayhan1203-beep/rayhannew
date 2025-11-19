@@ -311,7 +311,33 @@
                         <span class="q">35. Interface yang ingin dicek bandwidth "receive" adalah…</span>
                         <span class="a"><strong>Jawab: a. Wlan</strong></span>
                     </li>
-                    </ol>
+                </ol>
+                
+                <hr>
+                <h3>3. Soal Tambahan Subnetting (Studi Kasus Lab)</h3>
+                <p><strong>Studi Kasus:</strong> Jaringan Lab berkapasitas **40 unit PC** terhubung pada switch lab menggunakan IP Address **192.168.x.0/24** (dengan **x=3**). Tentukan subnetting yang dibutuhkan!</p>
+
+                <div class="essay-section" style="background-color: #fff3e0; border-left: 5px solid #ff9800;">
+                    <h4>✅ Solusi Subnetting (Host: 40, IP Awal: 192.168.3.0/24)</h4>
+                    <p>Untuk menampung 40 Host, dibutuhkan **6 bit Host** ($2^6 - 2 = 62$ Host). Ini menghasilkan **CIDR /26**.</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Parameter</th>
+                                <th>Hasil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1.</td><td>Network Address</td><td><strong>192.168.3.0/26</strong></td></tr>
+                            <tr><td>2.</td><td>Subnet Mask</td><td><strong>255.255.255.192</strong></td></tr>
+                            <tr><td>3.</td><td>Range IP (Host Valid)</td><td><strong>192.168.3.1 - 192.168.3.62</strong></td></tr>
+                            <tr><td>4.</td><td>Broadcast Address</td><td><strong>192.168.3.63</strong></td></tr>
+                            <tr><td>5.</td><td>IP Address (Contoh)</td><td>192.168.3.1/26</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                
             </div>
         </section>
 
