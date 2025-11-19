@@ -5,6 +5,7 @@
     padding: 0;
 }
 
+/* Variabel Default (Light Mode) */
 :root {
     --primary-color: #007bff; /* Biru */
     --text-color: #333;
@@ -195,6 +196,92 @@ blockquote {
     margin: 5px 0;
 }
 
+/* Styling Khusus Tugas */
+.task-container h3 {
+    color: var(--text-color);
+    font-size: 1.5em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+/* Tabel ASJ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 30px; 
+    background: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+}
+th, td {
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    text-align: left;
+}
+th {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+tr:nth-child(even) {
+    background-color: var(--bg-color); 
+}
+.dark-mode tr:nth-child(even) {
+    background-color: #2a2a2a; /* Warna gelap yang sedikit berbeda */
+}
+.answer-asj strong {
+    color: #ff5722; /* Warna merah/oranye untuk jawaban */
+    font-weight: 700;
+}
+.essay-section {
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: var(--card-bg);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.essay-section h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+.essay-section p {
+    margin-left: 0;
+}
+
+
+/* List AIJ */
+.aij-list {
+    list-style: none;
+    padding: 0;
+}
+.aij-list li{
+    margin:15px 0;
+    padding:16px;
+    border-radius:8px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.aij-list .q{
+    font-weight:600;
+    display:block;
+    margin-bottom:8px;
+    color: var(--text-color);
+}
+.aij-list .a{
+    margin-top:8px;
+    display:block;
+    color:var(--primary-color);
+    font-weight:700;
+}
+.aij-list .a strong {
+    color: #ff5722; /* Warna merah/oranye untuk jawaban */
+}
+
 /* Responsif */
 @media (max-width: 600px) {
     nav {
@@ -206,4 +293,39 @@ blockquote {
         text-align: center;
         padding: 5px;
     }
+    
+    /* Responsif Tabel ASJ */
+    th, td {
+        display: block;
+    }
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr { border: 1px solid var(--border-color); margin-bottom: 10px; }
+    td {
+        border: none;
+        border-bottom: 1px solid var(--border-color);
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+    td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: #6a6a6a;
+    }
+    .dark-mode td:before {
+        color: #a8a8a8;
+    }
+    td:nth-of-type(1):before { content: "No."; }
+    td:nth-of-type(2):before { content: "Pertanyaan"; }
+    td:nth-of-type(3):before { content: "Jawaban"; }
 }
