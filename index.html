@@ -5,267 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil Saya - Rayhan | Tugas ASJ & AIJ</title>
     
-    <style>
-        /* Variabel CSS dari input kedua */
-        :root{
-            --bg:#0f172a;
-            --card:#0b1220;
-            --muted:#9aa4b2;
-            --accent:#06b6d4;
-            --text:#e6eef6;
-        }
-
-        /* Styling Profil Utama */
-        body {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background:linear-gradient(180deg,#071025,#061225); 
-            color:var(--text);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        
-        /* Dark Mode Toggle (untuk kompatibilitas) */
-        body.dark-mode {
-            background: #1e293b;
-            color: #f1f5f9;
-        }
-
-        /* Navigation Styling */
-        header {
-            background-color: var(--card);
-            padding: 15px 0;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: var(--accent);
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #0e7490;
-        }
-
-        /* Main Content & Section Styling */
-        main {
-            padding: 24px;
-        }
-        section {
-            display: none; 
-            padding: 40px 20px;
-            margin: 20px auto;
-            max-width: 960px;
-            background:var(--card);
-            border-radius: 14px;
-            box-shadow:0 6px 20px rgba(0,0,0,0.5);
-        }
-        section.active {
-            display: block;
-        }
-        h1, h2, h3 {
-            color: var(--text);
-        }
-        h2 {
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        /* Home/Profile Card Styling */
-        #home {
-            text-align: center;
-        }
-        .profile-card {
-            padding: 30px;
-            background:var(--card);
-            border-radius: 10px;
-        }
-        .profile-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--accent);
-            margin-bottom: 15px;
-        }
-        .profile-card h1 {
-            margin: 5px 0;
-            color: var(--accent);
-        }
-        .profile-card p {
-            color: var(--muted);
-        }
-        button {
-            padding: 10px 20px;
-            border: none;
-            background-color: var(--accent);
-            color: var(--card);
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 15px;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #0e7490;
-        }
-
-        /* PKL Gallery Styling */
-        .gallery {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .gallery-item {
-            max-width: 300px;
-            text-align: center;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-        }
-        blockquote {
-            background: rgba(6, 182, 212, 0.1);
-            border-left: 5px solid var(--accent);
-            margin: 1.5em 0;
-            padding: 0.5em 10px;
-            quotes: "\201C""\201D""\2018""\2019";
-            color: var(--text);
-        }
-        .contact-info p strong {
-            display: inline-block;
-            width: 100px;
-            color: var(--accent);
-        }
-        
-        /* CSS Khusus Tugas */
-        #tasks {
-            padding: 24px;
-        }
-        .task-title {
-             font-size:22px;
-             margin:0 0 20px 0;
-             text-align: left;
-             border-bottom: none;
-        }
-        .task-container{
-            padding: 20px 0;
-        }
-        .task-container h3 {
-            border-left: 5px solid var(--accent);
-            padding-left: 10px;
-            margin-top: 30px;
-            color: var(--accent);
-        }
-        
-        /* Gaya Tabel ASJ (dari input pertama) */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            margin-bottom: 30px; 
-        }
-        th, td {
-            border: 1px solid #3b5062; /* Border disesuaikan untuk dark mode */
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #0e7490;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #1e293b; 
-        }
-        .answer-asj strong {
-            color: #f87171; 
-        }
-        .essay-section {
-            padding: 15px;
-            border: 1px solid #3b5062;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            background-color: #1e293b;
-        }
-        .essay-section h4 {
-            color: var(--accent);
-        }
-        .essay-section p {
-            margin-left: 20px;
-        }
-        
-        /* Gaya List AIJ (dari input kedua) */
-        .aij-list {
-            list-style: none;
-            padding: 0;
-        }
-        .aij-list li{
-            margin:20px 0;
-            padding:16px;
-            border-radius:10px;
-            background:linear-gradient(180deg,rgba(255,255,255,0.04),transparent); 
-        }
-        .aij-list .q{
-            font-weight:600;
-            display:block;
-            margin-bottom:8px;
-            color: var(--text);
-        }
-        .aij-list .a{
-            margin-top:8px;
-            display:block;
-            color:var(--accent);
-            font-weight:700;
-        }
-        .aij-list .a strong {
-            color: #f87171; /* Warna merah untuk penekanan jawaban */
-        }
-        
-        /* Media Query untuk Responsif Tabel ASJ */
-        @media screen and (max-width: 768px) {
-            th, td {
-                display: block;
-            }
-            thead tr {
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
-            }
-            tr { border: 1px solid #3b5062; margin-bottom: 10px; }
-            td {
-                border: none;
-                border-bottom: 1px solid #3b5062;
-                position: relative;
-                padding-left: 50%;
-                text-align: right;
-            }
-            td:before {
-                position: absolute;
-                top: 6px;
-                left: 6px;
-                width: 45%;
-                padding-right: 10px;
-                white-space: nowrap;
-                text-align: left;
-                font-weight: bold;
-                color: var(--muted);
-            }
-            td:nth-of-type(1):before { content: "No."; }
-            td:nth-of-type(2):before { content: "Pertanyaan"; }
-            td:nth-of-type(3):before { content: "Jawaban"; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
 
@@ -284,8 +25,8 @@
             <div class="profile-card">
                 <img src="WhatsApp Image 2025-10-27 at 11.30.27.jpg" alt="Foto Profil Saya" class="profile-photo"> 
                 <h1>Rayhan</h1>
-                <p>Mahasiswa | Calon Teknisi Profesional</p>
-                <button onclick="changeTheme()">Ganti Tema (Terang/Gelap)</button>
+                <p>Lulusan TKJ | Calon Teknisi Profesional</p>
+                <button onclick="changeTheme()">Ganti Tema (Gelap)</button>
             </div>
         </section>
 
@@ -303,7 +44,7 @@
             <div class="task-container">
                 <h2>📝 Daftar Tugas Mata Pelajaran TKJ</h2>
                 
-                <h3 class="task-title">1. Soal Administrasi Sistem Jaringan (ASJ - Hosting/Proxmox)</h3>
+                <h3>1. Soal Administrasi Sistem Jaringan (ASJ - Hosting/Proxmox)</h3>
 
                 <h4>I. Soal Pilihan Ganda (ASJ)</h4>
                 <table>
@@ -427,7 +168,7 @@
                 </div>
                 <hr>
 
-                <h3 class="task-title">2. Soal Administrasi Infrastruktur Jaringan (AIJ - Mikrotik/Networking)</h3>
+                <h3>2. Soal Administrasi Infrastruktur Jaringan (AIJ - Mikrotik/Networking)</h3>
 
                 <ol class="aij-list">
                     <li>
@@ -607,11 +348,10 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Logika Navigasi Interaktif (Hanya Menampilkan Section yang Aktif)
+            // Logika Navigasi Interaktif
             const navLinks = document.querySelectorAll('nav a');
             const sections = document.querySelectorAll('main section');
 
-            // Fungsi untuk menampilkan bagian yang aktif
             function showSection(id) {
                 sections.forEach(section => {
                     section.classList.remove('active');
@@ -622,33 +362,36 @@
                 }
             }
 
-            // Atur event listener untuk klik navigasi
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
-                    
-                    // Navigasi visual
                     showSection(targetId);
-
-                    // Update URL tanpa reload (interaktif)
                     history.pushState(null, '', targetId);
                 });
             });
 
-            // Handle saat halaman dimuat (jika ada hash di URL)
             const initialHash = window.location.hash || '#home';
             showSection(initialHash);
+            
+            // Atur tema saat dimuat (jika ada di localStorage)
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.querySelector('#home button').textContent = 'Ganti Tema (Terang)';
+            }
         });
 
         // Logika Tema Terang/Gelap
         function changeTheme() {
             document.body.classList.toggle('dark-mode');
             const button = document.querySelector('#home button');
+            
             if (document.body.classList.contains('dark-mode')) {
-                button.textContent = 'Ganti Tema (Mode Terang)';
+                localStorage.setItem('theme', 'dark');
+                button.textContent = 'Ganti Tema (Terang)';
             } else {
-                button.textContent = 'Ganti Tema (Terang/Gelap)';
+                localStorage.setItem('theme', 'light');
+                button.textContent = 'Ganti Tema (Gelap)';
             }
         }
     </script>
