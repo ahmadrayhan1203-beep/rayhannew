@@ -3,8 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Saya - Rayhan</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Profil Saya - Rayhan | Tugas ASJ & AIJ</title>
+    
+    <style>
+        /* Variabel CSS dari input kedua */
+        :root{
+            --bg:#0f172a;
+            --card:#0b1220;
+            --muted:#9aa4b2;
+            --accent:#06b6d4;
+            --text:#e6eef6;
+        }
+
+        /* Styling Profil Utama */
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background:linear-gradient(180deg,#071025,#061225); 
+            color:var(--text);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        /* Dark Mode Toggle (untuk kompatibilitas) */
+        body.dark-mode {
+            background: #1e293b;
+            color: #f1f5f9;
+        }
+
+        /* Navigation Styling */
+        header {
+            background-color: var(--card);
+            padding: 15px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #0e7490;
+        }
+
+        /* Main Content & Section Styling */
+        main {
+            padding: 24px;
+        }
+        section {
+            display: none; 
+            padding: 40px 20px;
+            margin: 20px auto;
+            max-width: 960px;
+            background:var(--card);
+            border-radius: 14px;
+            box-shadow:0 6px 20px rgba(0,0,0,0.5);
+        }
+        section.active {
+            display: block;
+        }
+        h1, h2, h3 {
+            color: var(--text);
+        }
+        h2 {
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Home/Profile Card Styling */
+        #home {
+            text-align: center;
+        }
+        .profile-card {
+            padding: 30px;
+            background:var(--card);
+            border-radius: 10px;
+        }
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            margin-bottom: 15px;
+        }
+        .profile-card h1 {
+            margin: 5px 0;
+            color: var(--accent);
+        }
+        .profile-card p {
+            color: var(--muted);
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: var(--accent);
+            color: var(--card);
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0e7490;
+        }
+
+        /* PKL Gallery Styling */
+        .gallery {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .gallery-item {
+            max-width: 300px;
+            text-align: center;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        }
+        blockquote {
+            background: rgba(6, 182, 212, 0.1);
+            border-left: 5px solid var(--accent);
+            margin: 1.5em 0;
+            padding: 0.5em 10px;
+            quotes: "\201C""\201D""\2018""\2019";
+            color: var(--text);
+        }
+        .contact-info p strong {
+            display: inline-block;
+            width: 100px;
+            color: var(--accent);
+        }
+        
+        /* CSS Khusus Tugas */
+        #tasks {
+            padding: 24px;
+        }
+        .task-title {
+             font-size:22px;
+             margin:0 0 20px 0;
+             text-align: left;
+             border-bottom: none;
+        }
+        .task-container{
+            padding: 20px 0;
+        }
+        .task-container h3 {
+            border-left: 5px solid var(--accent);
+            padding-left: 10px;
+            margin-top: 30px;
+            color: var(--accent);
+        }
+        
+        /* Gaya Tabel ASJ (dari input pertama) */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 30px; 
+        }
+        th, td {
+            border: 1px solid #3b5062; /* Border disesuaikan untuk dark mode */
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #0e7490;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #1e293b; 
+        }
+        .answer-asj strong {
+            color: #f87171; 
+        }
+        .essay-section {
+            padding: 15px;
+            border: 1px solid #3b5062;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background-color: #1e293b;
+        }
+        .essay-section h4 {
+            color: var(--accent);
+        }
+        .essay-section p {
+            margin-left: 20px;
+        }
+        
+        /* Gaya List AIJ (dari input kedua) */
+        .aij-list {
+            list-style: none;
+            padding: 0;
+        }
+        .aij-list li{
+            margin:20px 0;
+            padding:16px;
+            border-radius:10px;
+            background:linear-gradient(180deg,rgba(255,255,255,0.04),transparent); 
+        }
+        .aij-list .q{
+            font-weight:600;
+            display:block;
+            margin-bottom:8px;
+            color: var(--text);
+        }
+        .aij-list .a{
+            margin-top:8px;
+            display:block;
+            color:var(--accent);
+            font-weight:700;
+        }
+        .aij-list .a strong {
+            color: #f87171; /* Warna merah untuk penekanan jawaban */
+        }
+        
+        /* Media Query untuk Responsif Tabel ASJ */
+        @media screen and (max-width: 768px) {
+            th, td {
+                display: block;
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr { border: 1px solid #3b5062; margin-bottom: 10px; }
+            td {
+                border: none;
+                border-bottom: 1px solid #3b5062;
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+            td:before {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+                color: var(--muted);
+            }
+            td:nth-of-type(1):before { content: "No."; }
+            td:nth-of-type(2):before { content: "Pertanyaan"; }
+            td:nth-of-type(3):before { content: "Jawaban"; }
+        }
+    </style>
 </head>
 <body>
 
@@ -21,7 +282,7 @@
     <main>
         <section id="home" class="active">
             <div class="profile-card">
-                <img src="WhatsApp Image 2025-10-27 at 11.30.27.jpg" alt="Foto Profil Saya" class="profile-photo">
+                <img src="WhatsApp Image 2025-10-27 at 11.30.27.jpg" alt="Foto Profil Saya" class="profile-photo"> 
                 <h1>Rayhan</h1>
                 <p>Mahasiswa | Calon Teknisi Profesional</p>
                 <button onclick="changeTheme()">Ganti Tema (Terang/Gelap)</button>
@@ -30,250 +291,287 @@
 
         <section id="about">
             <h2>Tentang Saya</h2>
-            <p>Halo, perkenalkan nama saya Ahmad Rayhan, lulusan SMKN 12 Samarinda dari jurusan Teknik Komputer dan Jaringan (TKJ). Saya telah menyelesaikan Praktik Kerja Lapangan (PKL) di PT Patria Lintas Jaya, tempat saya mendapatkan banyak pengalaman baru dan keterampilan yang bermanfaat di bidang teknologi dan pekerjaan lapangan.
+            <p>Halo, perkenalkan nama saya **Ahmad Rayhan**, lulusan SMKN 12 Samarinda dari jurusan **Teknik Komputer dan Jaringan (TKJ)**. Saya telah menyelesaikan Praktik Kerja Lapangan (PKL) di PT Patria Lintas Jaya, tempat saya mendapatkan banyak pengalaman baru dan keterampilan yang bermanfaat di bidang teknologi dan pekerjaan lapangan.</p>
 
-Saya memiliki hobi bermain game dan bermain basket, yang membantu saya tetap aktif serta menyeimbangkan waktu antara belajar dan kegiatan pribadi.
+            <p>Saya memiliki hobi bermain game dan bermain basket, yang membantu saya tetap aktif serta menyeimbangkan waktu antara belajar dan kegiatan pribadi.</p>
 
-Dengan pengalaman PKL yang telah saya jalani, saya berharap bisa terus mengembangkan kemampuan dan siap melangkah ke dunia kerja maupun jenjang berikutnya.</p>
+            <p>Dengan pengalaman PKL yang telah saya jalani, saya berharap bisa terus mengembangkan kemampuan dan siap melangkah ke dunia kerja maupun jenjang berikutnya.</p>
             <p>Ke depan, saya berfokus untuk bekerja agar mendapatkan pengalaman profesional sekaligus melanjutkan kuliah guna meningkatkan pengetahuan dan kompetensi saya di bidang teknologi.</p>
         </section>
 
         <section id="tasks">
-            <h2>Daftar Tugas & Proyek</h2>
-           <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jawaban Soal Administrasi Sistem Jaringan</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            text-align: center;
-        }
-        h2 {
-            color: #34495e;
-            margin-top: 30px;
-            border-left: 5px solid #3498db;
-            padding-left: 10px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #3498db;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        strong {
-            color: #e74c3c; /* Warna untuk jawaban yang ditekankan */
-        }
-        .essay-section {
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            background-color: #ecf0f1;
-        }
-        .essay-section h3 {
-            color: #2980b9;
-        }
-        .essay-section p {
-            margin-left: 20px;
-        }
-        @media screen and (max-width: 600px) {
-            table, thead, tbody, th, td, tr {
-                display: block;
-            }
-            thead tr {
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
-            }
-            tr { border: 1px solid #ccc; margin-bottom: 10px; }
-            td {
-                border: none;
-                border-bottom: 1px solid #eee;
-                position: relative;
-                padding-left: 50%;
-                text-align: right;
-            }
-            td:before {
-                position: absolute;
-                top: 6px;
-                left: 6px;
-                width: 45%;
-                padding-right: 10px;
-                white-space: nowrap;
-                text-align: left;
-                font-weight: bold;
-                color: #555;
-            }
-            td:nth-of-type(1):before { content: "No."; }
-            td:nth-of-type(2):before { content: "Pertanyaan"; }
-            td:nth-of-type(3):before { content: "Jawaban yang Tepat"; }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>📝 Jawaban Soal Administrasi Sistem Jaringan Kelas XII TKJ</h1>
+            <div class="task-container">
+                <h2>📝 Daftar Tugas Mata Pelajaran TKJ</h2>
+                
+                <h3 class="task-title">1. Soal Administrasi Sistem Jaringan (ASJ - Hosting/Proxmox)</h3>
 
-        <h2>I. Soal Pilihan Ganda</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Pertanyaan</th>
-                    <th>Jawaban yang Tepat</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>1.</td><td>Host yang disewakan untuk menampung konfigurasi web server, data-data dan file yang dibutuhkan sebuah website agar dapat diakses oleh para penggunanya melalui jaringan di sebut sebagai....</td><td><strong>d. hosting</strong></td></tr>
-                <tr><td>2.</td><td>Hosting yang menggunakan Satu komputer dengan satu space hardisk dibagi bersama-sama berdasarkan kuota masing-masing user merupakan tipe hosting....</td><td><strong>a. Shared hosting</strong></td></tr>
-                <tr><td>3.</td><td>Hosting yang memberikan kendali penuh kepada pengguna untuk mengatur dan mengelola seluruh konfigurasi server secara mandiri disebut sebagai.......</td><td><strong>b. dedicated hosting</strong></td></tr>
-                <tr><td>4.</td><td>Seorang siswa yang ingin memiliki web pribadi yang dapat menampilkan profil datanya dan beberapa catatan tentang mata pelajaran yang pernah diikutinya. Sebaiknya siswa tersebut memilih tipe hosting..</td><td><strong>a. Shared hosting</strong></td></tr>
-                <tr><td>5.</td><td>Hendra adalah staf IT di perusahaan ABC di Jakarta. Direktur utama menghendaki perusahaannya memiliki sistem informasi e-commerce yang dapat terkoneksi dengan sistem keuangan perusahaan dan perbankan. Jenis hosting apa yang harus digunakan oleh Hendra...</td><td><strong>b. dedicated hosting</strong></td></tr>
-                <tr><td>6.</td><td>Hosting yang biasanya dipakai oleh reseller-reseller domain dan hosting untuk menjalankan bisnis mereka...</td><td><strong>Shared hosting</strong> atau <strong>Virtual Private Server (VPS)</strong></td></tr>
-                <tr><td>7.</td><td>Jenis web control panel yang dapat dijalankan pada OS Linux yang bersifat open source di bawah lisensi BSD yang dikembangkan oleh perusahaan Jerman projektfarm GmbH adalah.....</td><td><strong>e. ISPConfig</strong></td></tr>
-                <tr><td>8.</td><td>Aplikasi web control panel berikut yang tidak memiliki lisensi gratis berbasis open source adalah........</td><td><strong>b. cPanel</strong></td></tr>
-                <tr><td>9.</td><td>Web control panel berikut yang tepat jika Anda ingin menerapkan monitoring dan manajemen multi server adalah.......</td><td><strong>d. Virtualmin</strong></td></tr>
-                <tr><td>10.</td><td>Aplikasi web hosting control panel Linux berikut yang bersifat open source berlisensi AGPL serta dibuat dengan bahasa pemrograman Python adalah.....</td><td><strong>a. Ajenti</strong></td></tr>
-                <tr><td>11.</td><td>Berikut yang tidak termasuk jenis control panel bersifat gratis, yaitu...</td><td><strong>a. cPanel dan webmin</strong> (*Karena cPanel berbayar*)</td></tr>
-                <tr><td>12.</td><td>Beban server utama menjadi lebih ringan, tidak memakan bandwith besar meski tergolong cukup mahal dalam hal investasinya merupakan ciri dari.....</td><td><strong>d. Cloud hosting</strong></td></tr>
-                <tr><td>13.</td><td>Aplikasi control panel berbasis web yang awalnya dikembangkan oleh Jamie Cameron untuk melakukan administrasi sistem Unix, kemudian berkembang menjadi sebuah web control panel yang mendukung hampir semua fitur manajemen sistem server adalah...</td><td><strong>b. webmin</strong></td></tr>
-                <tr><td>14.</td><td>Dengan menerapkan teknologi cloud computing informasi yang dibangun akan memberikan manfaat, kecuali ....</td><td><strong>e. murah</strong></td></tr>
-                <tr><td>15.</td><td>Aplikasi web control panel Virtualmin memiliki dua macam versi dengan tipe lisensi yang berbeda, yaitu ....</td><td><strong>b. Virtualmin GPL dan Virtualmin Pro</strong></td></tr>
-                <tr><td>16.</td><td>Langkah mengakses Webmin (http://192.168.56.20:10000/) digunakan untuk...</td><td><strong>b. melakukan konfigurasi ulang terhadap virtual server</strong></td></tr>
-                <tr><td>17.</td><td>Gambar icon aplikasi yang dimaksud adalah....</td><td><strong>c. Laragon</strong></td></tr>
-                <tr><td>18.</td><td>File PHPMyAdmin yang telah diekstrak dipindah ke folder C:\Laragon\....</td><td><strong>b. etc → data</strong></td></tr>
-                <tr><td>19.</td><td>File Wordpress yang telah diekstrak dipindah ke folder C:\Laragon\....</td><td><strong>e. www</strong></td></tr>
-                <tr><td>20.</td><td>Pengembangan Proxmox dilakukan oleh dua tokoh yang juga merupakan pengembang Linux. Dua tokoh yang dimaksud adalah.....</td><td><strong>d. Dietmar dan Martin Maurer</strong></td></tr>
-                <tr><td>21.</td><td>Jika Anda akan menggunakan domain tidak berbayar maka pilihan yang tepat dari domain berikut, yaitu....</td><td><strong>b. .tk</strong></td></tr>
-                <tr><td>22.</td><td>Salah satu jenis hypervisor berbasis OS Debian yang dikembangkan untuk menghandle sistem virtualisasi...</td><td><strong>d. Proxmox VE</strong></td></tr>
-                <tr><td>23.</td><td>Port yang harus dibuka secara default untuk mengoperasikan halaman control panel Proxmox VE melalui aplikasi web browser computer klien, yaitu</td><td><strong>b. 8006</strong></td></tr>
-                <tr><td>24.</td><td>Fungsi yang sesuai jika Anda memilih menu Pool pada Proxmox VE adalah</td><td><strong>e. Membuat satu atau lebih node/VM dalam sebuah kelompok agar lebih mudah dikelola</strong></td></tr>
-                <tr><td>25.</td><td>Alasan VPS menjadi pilihan yang terbaik adalah.</td><td><strong>d. Bekerja layaknya sebuah mesin server nyata</strong></td></tr>
-                <tr><td>26.</td><td>Karakteristik aplikasi web control panel yang bersifat gratis dan open source dan dibangun dengan Python merupakan ciri khas dari</td><td><strong>a. Ajenti</strong></td></tr>
-                <tr><td>27.</td><td>Virtual Mesin yang ada di Sistem operasi Windows adalah...</td><td><strong>c. VirtualBox</strong></td></tr>
-                <tr><td>28.</td><td>Virtual Mesin yang ada di Sistem operasi Linux adalah...</td><td><strong>d. Proxmox</strong></td></tr>
-                <tr><td>29.</td><td>Ruang Virtual Pribadi yang ada di server adalah...</td><td><strong>a. VPS</strong></td></tr>
-                <tr><td>30.</td><td>Ruang Virtual Pribadi yang ada di Jaringan adalah...</td><td><strong>b. VPN</strong></td></tr>
-                <tr><td>31.</td><td>Berikut ini yang bukan merupakan jenis shared hosting adalah....</td><td><strong>a. bythost.com</strong></td></tr>
-                <tr><td>32.</td><td>Berikut ini yang merupakan contoh blog adalah.....</td><td><strong>c. mirasahid.com</strong></td></tr>
-                <tr><td>33.</td><td>Karakteristik aplikasi web control panel yang bersifat gratis dan open source dan dibangun dengan Python merupakan ciri khas dari</td><td><strong>a. Ajenti</strong></td></tr>
-                <tr><td>34.</td><td>Jika ingin memberikan alamat IP maka pilih nomor....</td><td><strong>c. 3</strong></td></tr>
-                <tr><td>35.</td><td>Apa kepanjangan dari "DNS" dalam DNS server?</td><td><strong>b. Domain Name System</strong></td></tr>
-            </tbody>
-        </table>
+                <h4>I. Soal Pilihan Ganda (ASJ)</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Pertanyaan</th>
+                            <th>Jawaban yang Tepat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1.</td><td>Host yang disewakan untuk menampung konfigurasi web server, data-data dan file yang dibutuhkan sebuah website agar dapat diakses oleh para penggunanya melalui jaringan di sebut sebagai....</td><td class="answer-asj"><strong>d. hosting</strong></td></tr>
+                        <tr><td>2.</td><td>Hosting yang menggunakan Satu komputer dengan satu space hardisk dibagi bersama-sama berdasarkan kuota masing-masing user merupakan tipe hosting....</td><td class="answer-asj"><strong>a. Shared hosting</strong></td></tr>
+                        <tr><td>3.</td><td>Hosting yang memberikan kendali penuh kepada pengguna untuk mengatur dan mengelola seluruh konfigurasi server secara mandiri disebut sebagai.......</td><td class="answer-asj"><strong>b. dedicated hosting</strong></td></tr>
+                        <tr><td>4.</td><td>Seorang siswa yang ingin memiliki web pribadi yang dapat menampilkan profil datanya dan beberapa catatan tentang mata pelajaran yang pernah diikutinya. Sebaiknya siswa tersebut memilih tipe hosting..</td><td class="answer-asj"><strong>a. Shared hosting</strong></td></tr>
+                        <tr><td>5.</td><td>Hendra adalah staf IT di perusahaan ABC di Jakarta. Direktur utama menghendaki perusahaannya memiliki sistem informasi e-commerce yang dapat terkoneksi dengan sistem keuangan perusahaan dan perbankan. Jenis hosting apa yang harus digunakan oleh Hendra...</td><td class="answer-asj"><strong>b. dedicated hosting</strong></td></tr>
+                        <tr><td>6.</td><td>Hosting yang biasanya dipakai oleh reseller-reseller domain dan hosting untuk menjalankan bisnis mereka...</td><td class="answer-asj"><strong>Shared hosting</strong> atau <strong>Virtual Private Server (VPS)</strong></td></tr>
+                        <tr><td>7.</td><td>Jenis web control panel yang dapat dijalankan pada OS Linux yang bersifat open source di bawah lisensi BSD yang dikembangkan oleh perusahaan Jerman projektfarm GmbH adalah.....</td><td class="answer-asj"><strong>e. ISPConfig</strong></td></tr>
+                        <tr><td>8.</td><td>Aplikasi web control panel berikut yang tidak memiliki lisensi gratis berbasis open source adalah........</td><td class="answer-asj"><strong>b. cPanel</strong></td></tr>
+                        <tr><td>9.</td><td>Web control panel berikut yang tepat jika Anda ingin menerapkan monitoring dan manajemen multi server adalah.......</td><td class="answer-asj"><strong>d. Virtualmin</strong></td></tr>
+                        <tr><td>10.</td><td>Aplikasi web hosting control panel Linux berikut yang bersifat open source berlisensi AGPL serta dibuat dengan bahasa pemrograman Python adalah.....</td><td class="answer-asj"><strong>a. Ajenti</strong></td></tr>
+                        <tr><td>11.</td><td>Berikut yang tidak termasuk jenis control panel bersifat gratis, yaitu...</td><td class="answer-asj"><strong>a. cPanel dan webmin</strong> (*Karena cPanel berbayar*)</td></tr>
+                        <tr><td>12.</td><td>Beban server utama menjadi lebih ringan, tidak memakan bandwith besar meski tergolong cukup mahal dalam hal investasinya merupakan ciri dari.....</td><td class="answer-asj"><strong>d. Cloud hosting</strong></td></tr>
+                        <tr><td>13.</td><td>Aplikasi control panel berbasis web yang awalnya dikembangkan oleh Jamie Cameron untuk melakukan administrasi sistem Unix, kemudian berkembang menjadi sebuah web control panel yang mendukung hampir semua fitur manajemen sistem server adalah...</td><td class="answer-asj"><strong>b. webmin</strong></td></tr>
+                        <tr><td>14.</td><td>Dengan menerapkan teknologi cloud computing informasi yang dibangun akan memberikan manfaat, kecuali ....</td><td class="answer-asj"><strong>e. murah</strong></td></tr>
+                        <tr><td>15.</td><td>Aplikasi web control panel Virtualmin memiliki dua macam versi dengan tipe lisensi yang berbeda, yaitu ....</td><td class="answer-asj"><strong>b. Virtualmin GPL dan Virtualmin Pro</strong></td></tr>
+                        <tr><td>16.</td><td>Langkah mengakses Webmin (http://192.168.56.20:10000/) digunakan untuk...</td><td class="answer-asj"><strong>b. melakukan konfigurasi ulang terhadap virtual server</strong></td></tr>
+                        <tr><td>17.</td><td>Gambar icon aplikasi yang dimaksud adalah....</td><td class="answer-asj"><strong>c. Laragon</strong></td></tr>
+                        <tr><td>18.</td><td>File PHPMyAdmin yang telah diekstrak dipindah ke folder C:\Laragon\....</td><td class="answer-asj"><strong>b. etc → data</strong></td></tr>
+                        <tr><td>19.</td><td>File Wordpress yang telah diekstrak dipindah ke folder C:\Laragon\....</td><td class="answer-asj"><strong>e. www</strong></td></tr>
+                        <tr><td>20.</td><td>Pengembangan Proxmox dilakukan oleh dua tokoh yang juga merupakan pengembang Linux. Dua tokoh yang dimaksud adalah.....</td><td class="answer-asj"><strong>d. Dietmar dan Martin Maurer</strong></td></tr>
+                        <tr><td>21.</td><td>Jika Anda akan menggunakan domain tidak berbayar maka pilihan yang tepat dari domain berikut, yaitu....</td><td class="answer-asj"><strong>b. .tk</strong></td></tr>
+                        <tr><td>22.</td><td>Salah satu jenis hypervisor berbasis OS Debian yang dikembangkan untuk menghandle sistem virtualisasi...</td><td class="answer-asj"><strong>d. Proxmox VE</strong></td></tr>
+                        <tr><td>23.</td><td>Port yang harus dibuka secara default untuk mengoperasikan halaman control panel Proxmox VE melalui aplikasi web browser computer klien, yaitu</td><td class="answer-asj"><strong>b. 8006</strong></td></tr>
+                        <tr><td>24.</td><td>Fungsi yang sesuai jika Anda memilih menu Pool pada Proxmox VE adalah</td><td class="answer-asj"><strong>e. Membuat satu atau lebih node/VM dalam sebuah kelompok agar lebih mudah dikelola</strong></td></tr>
+                        <tr><td>25.</td><td>Alasan VPS menjadi pilihan yang terbaik adalah.</td><td class="answer-asj"><strong>d. Bekerja layaknya sebuah mesin server nyata</strong></td></tr>
+                        <tr><td>26.</td><td>Karakteristik aplikasi web control panel yang bersifat gratis dan open source dan dibangun dengan Python merupakan ciri khas dari</td><td class="answer-asj"><strong>a. Ajenti</strong></td></tr>
+                        <tr><td>27.</td><td>Virtual Mesin yang ada di Sistem operasi Windows adalah...</td><td class="answer-asj"><strong>c. VirtualBox</strong></td></tr>
+                        <tr><td>28.</td><td>Virtual Mesin yang ada di Sistem operasi Linux adalah...</td><td class="answer-asj"><strong>d. Proxmox</strong></td></tr>
+                        <tr><td>29.</td><td>Ruang Virtual Pribadi yang ada di server adalah...</td><td class="answer-asj"><strong>a. VPS</strong></td></tr>
+                        <tr><td>30.</td><td>Ruang Virtual Pribadi yang ada di Jaringan adalah...</td><td class="answer-asj"><strong>b. VPN</strong></td></tr>
+                        <tr><td>31.</td><td>Berikut ini yang bukan merupakan jenis shared hosting adalah....</td><td class="answer-asj"><strong>a. bythost.com</strong></td></tr>
+                        <tr><td>32.</td><td>Berikut ini yang merupakan contoh blog adalah.....</td><td class="answer-asj"><strong>c. mirasahid.com</strong></td></tr>
+                        <tr><td>33.</td><td>Karakteristik aplikasi web control panel yang bersifat gratis dan open source dan dibangun dengan Python merupakan ciri khas dari</td><td class="answer-asj"><strong>a. Ajenti</strong></td></tr>
+                        <tr><td>34.</td><td>Jika ingin memberikan alamat IP maka pilih nomor....</td><td class="answer-asj"><strong>c. 3</strong></td></tr>
+                        <tr><td>35.</td><td>Apa kepanjangan dari "DNS" dalam DNS server?</td><td class="answer-asj"><strong>b. Domain Name System</strong></td></tr>
+                    </tbody>
+                </table>
+                <hr>
 
-        <hr>
+                <h4>II. Soal Esai (ASJ)</h4>
 
-        <h2>II. Soal Esai</h2>
+                <div class="essay-section">
+                    <h4>36. Skema Jaringan untuk Usaha Penyewaan Hosting</h4>
+                    <p>Skema jaringan yang paling tepat adalah <strong>Virtual Private Server (VPS)</strong> atau <strong>Shared Hosting</strong> dengan menggunakan <strong>Virtualisasi Jaringan (Subnetting/VLAN)</strong>.</p>
+                    <p><strong>Penjelasan:</strong></p>
+                    <ul>
+                        <li><strong>VPS:</strong> Memungkinkan pembagian satu server fisik menjadi server-server virtual terisolasi, di mana masing-masing dapat dialokasikan IP Address publik dari range yang tersedia.</li>
+                        <li><strong>Subnetting:</strong> Digunakan untuk membuat range IP spesifik (10 IP) bagi 10 klien, memisahkannya dari jaringan manajemen server utama ($10.10.1.1/8$) untuk meningkatkan keamanan dan pengelolaan.</li>
+                    </ul>
+                </div>
 
-        <div class="essay-section">
-            <h3>36. Skema Jaringan untuk Usaha Penyewaan Hosting</h3>
-            <p>Skema jaringan yang paling tepat adalah <strong>Virtual Private Server (VPS)</strong> atau <strong>Shared Hosting</strong> dengan menggunakan <strong>Virtualisasi Jaringan (Subnetting/VLAN)</strong>.</p>
-            <p><strong>Penjelasan:</strong></p>
-            <ul>
-                <li><strong>VPS:</strong> Memungkinkan pembagian satu server fisik menjadi server-server virtual terisolasi, di mana masing-masing dapat dialokasikan IP Address publik dari range yang tersedia.</li>
-                <li><strong>Subnetting:</strong> Digunakan untuk membuat range IP spesifik (10 IP) bagi 10 klien, memisahkannya dari jaringan manajemen server utama ($10.10.1.1/8$) untuk meningkatkan keamanan dan pengelolaan.</li>
-            </ul>
-        </div>
+                <div class="essay-section">
+                    <h4>37. Perbedaan antara Shared Hosting dan Dedicated Hosting</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fitur</th>
+                                <th>Shared Hosting 🤝</th>
+                                <th>Dedicated Hosting 👑</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sumber Daya</td>
+                                <td>Berbagi (CPU, RAM, Disk Space) dengan banyak pengguna lain.</td>
+                                <td>Sumber daya penuh dari satu server fisik digunakan hanya oleh satu pengguna.</td>
+                            </tr>
+                            <tr>
+                                <td>Kontrol</td>
+                                <td>Terbatas, hanya mengelola aplikasi/file via control panel.</td>
+                                <td>Penuh (Root Access) untuk mengelola seluruh konfigurasi server.</td>
+                            </tr>
+                            <tr>
+                                <td>Harga</td>
+                                <td>Relatif **murah** dan terjangkau.</td>
+                                <td>Relatif **mahal** (investasi penuh).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-        <div class="essay-section">
-            <h3>37. Perbedaan antara Shared Hosting dan Dedicated Hosting</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Fitur</th>
-                        <th>Shared Hosting 🤝</th>
-                        <th>Dedicated Hosting 👑</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Sumber Daya</td>
-                        <td>Berbagi (CPU, RAM, Disk Space) dengan banyak pengguna lain.</td>
-                        <td>Sumber daya penuh dari satu server fisik digunakan hanya oleh satu pengguna.</td>
-                    </tr>
-                    <tr>
-                        <td>Kontrol</td>
-                        <td>Terbatas, hanya mengelola aplikasi/file via control panel.</td>
-                        <td>Penuh (Root Access) untuk mengelola seluruh konfigurasi server.</td>
-                    </tr>
-                    <tr>
-                        <td>Harga</td>
-                        <td>Relatif **murah** dan terjangkau.</td>
-                        <td>Relatif **mahal** (investasi penuh).</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                <div class="essay-section">
+                    <h4>38. Alasan VPS Lebih Manageable Dibanding Shared Hosting</h4>
+                    <p>VPS lebih mudah dikelola karena:</p>
+                    <ul>
+                        <li><strong>Kontrol Penuh (*Root Access*):</strong> Pengguna dapat menginstal, mengkonfigurasi, dan memodifikasi perangkat lunak/sistem operasi sesuai kebutuhan, hal yang tidak mungkin pada *shared hosting*.</li>
+                        <li><strong>Isolasi Sumber Daya:</strong> Kinerja dijamin stabil karena sumber daya dialokasikan secara eksklusif dan tidak dipengaruhi oleh aktivitas pengguna lain.</li>
+                        <li><strong>Kustomisasi:</strong> Fleksibilitas untuk memilih OS, *web server*, dan *security patch* yang spesifik.</li>
+                    </ul>
+                </div>
 
-        <div class="essay-section">
-            <h3>38. Alasan VPS Lebih Manageable Dibanding Shared Hosting</h3>
-            <p>VPS lebih mudah dikelola karena:</p>
-            <ul>
-                <li><strong>Kontrol Penuh (*Root Access*):</strong> Pengguna dapat menginstal, mengkonfigurasi, dan memodifikasi perangkat lunak/sistem operasi sesuai kebutuhan, hal yang tidak mungkin pada *shared hosting*.</li>
-                <li><strong>Isolasi Sumber Daya:</strong> Kinerja dijamin stabil karena sumber daya dialokasikan secara eksklusif dan tidak dipengaruhi oleh aktivitas pengguna lain.</li>
-                <li><strong>Kustomisasi:</strong> Fleksibilitas untuk memilih OS, *web server*, dan *security patch* yang spesifik.</li>
-            </ul>
-        </div>
+                <div class="essay-section">
+                    <h4>39. Jenis Hosting untuk Sistem E-Commerce yang Terkoneksi dengan Keuangan</h4>
+                    <p><strong>Jenis Hosting:</strong> <strong>Dedicated Hosting</strong> atau <strong>Virtual Private Server (VPS) Tingkat Tinggi</strong>.</p>
+                    <p><strong>Alasan:</strong></p>
+                    <ul>
+                        <li>Sistem yang terintegrasi dengan keuangan dan perbankan membutuhkan <strong>keamanan tingkat tinggi</strong> dan <strong>kinerja stabil</strong>.</li>
+                        <li>Dedicated Hosting/VPS menawarkan <strong>sumber daya eksklusif</strong>, <strong>isolasi keamanan</strong>, dan <strong>kontrol penuh</strong> (*root access*) untuk memenuhi standar regulasi dan menangani transaksi sensitif.</li>
+                    </ul>
+                </div>
 
-        <div class="essay-section">
-            <h3>39. Jenis Hosting untuk Sistem E-Commerce yang Terkoneksi dengan Keuangan</h3>
-            <p><strong>Jenis Hosting:</strong> <strong>Dedicated Hosting</strong> atau <strong>Virtual Private Server (VPS) Tingkat Tinggi</strong>.</p>
-            <p><strong>Alasan:</strong></p>
-            <ul>
-                <li>Sistem yang terintegrasi dengan keuangan dan perbankan membutuhkan <strong>keamanan tingkat tinggi</strong> dan <strong>kinerja stabil</strong>.</li>
-                <li>Dedicated Hosting/VPS menawarkan <strong>sumber daya eksklusif</strong>, <strong>isolasi keamanan</strong>, dan <strong>kontrol penuh</strong> (*root access*) untuk memenuhi standar regulasi dan menangani transaksi sensitif.</li>
-            </ul>
-        </div>
+                <div class="essay-section">
+                    <h4>40. Saran Hosting untuk Siswa (Web Pribadi)</h4>
+                    <p>Saran yang diberikan kepada siswa:</p>
+                    <ul>
+                        <li><strong>Pilihan Hosting:</strong> Pilih <strong>Shared Hosting</strong> atau layanan *blogging* gratis (Blogger/WordPress.com) karena murah dan sumber daya yang dibutuhkan rendah.</li>
+                        <li><strong>Pilihan Domain:</strong> Gunakan <strong>domain gratis</strong> (seperti .tk) atau *subdomain* dari layanan blog gratis.</li>
+                        <li><strong>CMS:</strong> Disarankan menggunakan <strong>WordPress</strong> karena mudah diinstal dan dikelola, cocok untuk pemula.</li>
+                    </ul>
+                </div>
+                <hr>
 
-        <div class="essay-section">
-            <h3>40. Saran Hosting untuk Siswa (Web Pribadi)</h3>
-            <p>Saran yang diberikan kepada siswa:</p>
-            <ul>
-                <li><strong>Pilihan Hosting:</strong> Pilih <strong>Shared Hosting</strong> atau layanan *blogging* gratis (Blogger/WordPress.com) karena murah dan sumber daya yang dibutuhkan rendah.</li>
-                <li><strong>Pilihan Domain:</strong> Gunakan <strong>domain gratis</strong> (seperti .tk) atau *subdomain* dari layanan blog gratis.</li>
-                <li><strong>CMS:</strong> Disarankan menggunakan <strong>WordPress</strong> karena mudah diinstal dan dikelola, cocok untuk pemula.</li>
-            </ul>
-        </div>
-    </div>
- 
-<script>
-// simple download link for current HTML
-const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html'});
-const url = URL.createObjectURL(blob);
-document.getElementById('downloadLink').href = url;
-document.getElementById('downloadLink').setAttribute('download','Soal-AIJ-XII-TKJ.html');
-</script>
-</body>
+                <h3 class="task-title">2. Soal Administrasi Infrastruktur Jaringan (AIJ - Mikrotik/Networking)</h3>
+
+                <ol class="aij-list">
+                    <li>
+                        <span class="q">1. Berikut yang bukan syarat sebuah komputer jaringan lokal saling terhubung adalah…</span>
+                        <span class="a"><strong>Jawab: a. memiliki alamat host yang sama</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">2. Jika dalam perusahaan terdapat 300 komputer, mekanisme jaringan paling efektif adalah…</span>
+                        <span class="a"><strong>Jawab: d. routing dinamis</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">3. NAT yang berfungsi menyambungkan perangkat agar bisa diakses dari internet adalah…</span>
+                        <span class="a"><strong>Jawab: b. static NAT</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">4. Fitur chain NAT untuk mengubah akses dari jaringan publik ke lokal adalah…</span>
+                        <span class="a"><strong>Jawab: d. dstnat</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">5. Berikut ini adalah fungsi dari Firewall yang tepat adalah…</span>
+                        <span class="a"><strong>Jawab: b. Mengatur dan mengontrol lalu lintas jaringan</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">6. Firewall NAT yang digunakan untuk mengubah source address dengan metode one-to-one adalah…</span>
+                        <span class="a"><strong>Jawab: a. src-nat</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">7. Firewall NAT yang digunakan untuk mengubah IP address sumber saat jumlah client lebih dari satu adalah…</span>
+                        <span class="a"><strong>Jawab: c. masquerade</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">8. Firewall NAT yang digunakan untuk mengubah alamat IP tujuan menjadi router itu sendiri adalah…</span>
+                        <span class="a"><strong>Jawab: b. redirect</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">9. Action yang digunakan untuk menolak paket tanpa memberikan pemberitahuan adalah…</span>
+                        <span class="a"><strong>Jawab: a. Drop</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">10. Action yang digunakan untuk menolak paket dengan memberikan pemberitahuan adalah…</span>
+                        <span class="a"><strong>Jawab: e. Reject</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">11. Firewall yang dapat digunakan untuk mencatat suatu aktivitas (misalnya mencatat siapa melakukan ping ke router) adalah…</span>
+                        <span class="a"><strong>Jawab: c. Logging</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">12. Dibawah ini merupakan kelebihan GUI dibandingkan Text adalah…</span>
+                        <span class="a"><strong>Jawab: c. User friendly</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">13. Memiliki fungsi untuk mengubah destination address agar host lokal dapat diakses dari luar jaringan adalah…</span>
+                        <span class="a"><strong>Jawab: a. DSTNAT</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">14. Router pada gambar berikut adalah…</span>
+                        <span class="a"><strong>Jawab: b. RB750gr3</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">15. Cara mengakses router Mikrotik di bawah ini, kecuali…</span>
+                        <span class="a"><strong>Jawab: a. Komputer</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">16. Model arsitektural jaringan komputer yang dikembangkan sebagai standar komunikasi data adalah…</span>
+                        <span class="a"><strong>Jawab: d. OSI</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">17. Berapakah jumlah host dari network address 192.168.1.64/27?</span>
+                        <span class="a"><strong>Jawab: a. 30</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">18. Router beroperasi pada layer…</span>
+                        <span class="a"><strong>Jawab: b. Network</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">19. Pembagian network address menjadi kelompok kecil disebut…</span>
+                        <span class="a"><strong>Jawab: e. Host ID (Subnetting)</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">20. Mengapa banyak pengguna Mikrotik di Indonesia?</span>
+                        <span class="a"><strong>Jawab: a. Harga terjangkau dan fitur lengkap</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">21. Perbedaan mendasar antara Telnet dan SSH adalah…</span>
+                        <span class="a"><strong>Jawab: b. Keamanan</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">22. Aplikasi tambahan untuk melakukan instalasi RouterOS menggunakan Netinstall adalah…</span>
+                        <span class="a"><strong>Jawab: b. Kabel LAN</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">23. Untuk melakukan remote SSH atau Telnet, hal yang perlu diketahui adalah…</span>
+                        <span class="a"><strong>Jawab: c. IP Address</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">24. Alat yang menghubungkan dua jaringan berbeda adalah…</span>
+                        <span class="a"><strong>Jawab: d. Router</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">25. Pada menu apakah jika kita ingin melakukan konfigurasi Identity pada router di Mikrotik?</span>
+                        <span class="a"><strong>Jawab: d. System > Identity</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">26. Berikut ini adalah contoh media transmisi yang menggunakan kabel, kecuali…</span>
+                        <span class="a"><strong>Jawab: b. SMTP</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">27. Fungsi dari Winbox adalah untuk meremote mikrotik ke dalam mode…</span>
+                        <span class="a"><strong>Jawab: c. GUI</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">28. Berikut ini kelebihan mikrotik adalah…</span>
+                        <span class="a"><strong>Jawab: e. Semua benar</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">29. Definisi untuk daerah yang dilayani oleh satu access point wireless LAN adalah…</span>
+                        <span class="a"><strong>Jawab: b. Hotspot</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">30. Bandwidth adalah perhitungan konsumsi yang tersedia pada teori komunikasi dihitung dalam satuan…</span>
+                        <span class="a"><strong>Jawab: d. bit/second</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">31. Jika diberikan data MAC address E01: C4:AD:34:B1:D6:E6 dan W01: C4:AD:34:B1:D6:EB, maka MAC Address router adalah…</span>
+                        <span class="a"><strong>Jawab: a. C4:AD:34:B1:D6:E6</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">32. DHCP merupakan singkatan dari…</span>
+                        <span class="a"><strong>Jawab: a. Dynamic Host Configuration Protocol</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">33. Jika sumber internet menggunakan ether1, maka IP Address DHCP Client yang benar adalah…</span>
+                        <span class="a"><strong>Jawab: d. 192.168.240.3/24</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">34. Jika ingin mengetahui bandwidth WLAN menggunakan bandwidth test, maka IP Address pada "test to" harus diisi…</span>
+                        <span class="a"><strong>Jawab: a. 192.168.34.1/24</strong></span>
+                    </li>
+                    <li>
+                        <span class="q">35. Interface yang ingin dicek bandwidth "receive" adalah…</span>
+                        <span class="a"><strong>Jawab: a. Wlan</strong></span>
+                    </li>
+                    </ol>
+            </div>
         </section>
 
         <section id="internship">
@@ -282,11 +580,11 @@ document.getElementById('downloadLink').setAttribute('download','Soal-AIJ-XII-TK
 
             <div class="gallery">
                 <div class="gallery-item">
-                    <img src="rayhan pkl.jpg" alt="PKL Instalasi Kabel" loading="lazy">
+                    <img src="rayhan pkl.jpg" alt="PKL Instalasi Kabel" loading="lazy"> 
                     <p>Instalasi dan perbaikan kabel jaringan di ketinggian.</p>
                 </div>
                 <div class="gallery-item">
-                    <img src="rayhan pkl tower.jpg" alt="PKL Pemasangan di Tower" loading="lazy">
+                    <img src="rayhan pkl tower.jpg" alt="PKL Pemasangan di Tower" loading="lazy"> 
                     <p>Pekerjaan pada struktur tower telekomunikasi.</p>
                 </div>
             </div>
@@ -300,16 +598,16 @@ document.getElementById('downloadLink').setAttribute('download','Soal-AIJ-XII-TK
             <h2>Hubungi Saya</h2>
             <p>Tertarik untuk berkolaborasi atau ingin tahu lebih lanjut? Silakan hubungi saya melalui:</p>
             <div class="contact-info">
-                <p><strong>Email:</strong> [ahmad.rayhan1203@smk.belajar.id]</p>
-                <p><strong>Instagram:</strong> [raychoii]</p>
-                <p><strong>WhatsApp:</strong> [083140823532]</p>
+                <p><strong>Email:</strong> ahmad.rayhan1203@smk.belajar.id</p>
+                <p><strong>Instagram:</strong> @raychoii</p>
+                <p><strong>WhatsApp:</strong> 083140823532</p>
             </div>
         </section>
     </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Logika Navigasi Interaktif (Smooth Scroll dan Highlight)
+            // Logika Navigasi Interaktif (Hanya Menampilkan Section yang Aktif)
             const navLinks = document.querySelectorAll('nav a');
             const sections = document.querySelectorAll('main section');
 
@@ -318,7 +616,10 @@ document.getElementById('downloadLink').setAttribute('download','Soal-AIJ-XII-TK
                 sections.forEach(section => {
                     section.classList.remove('active');
                 });
-                document.querySelector(id).classList.add('active');
+                const targetSection = document.querySelector(id);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
             }
 
             // Atur event listener untuk klik navigasi
@@ -338,7 +639,6 @@ document.getElementById('downloadLink').setAttribute('download','Soal-AIJ-XII-TK
             // Handle saat halaman dimuat (jika ada hash di URL)
             const initialHash = window.location.hash || '#home';
             showSection(initialHash);
-
         });
 
         // Logika Tema Terang/Gelap
@@ -348,7 +648,7 @@ document.getElementById('downloadLink').setAttribute('download','Soal-AIJ-XII-TK
             if (document.body.classList.contains('dark-mode')) {
                 button.textContent = 'Ganti Tema (Mode Terang)';
             } else {
-                button.textContent = 'Ganti Tema (Mode Gelap)';
+                button.textContent = 'Ganti Tema (Terang/Gelap)';
             }
         }
     </script>
