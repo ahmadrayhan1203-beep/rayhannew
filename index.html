@@ -3,10 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Saya - Rayhan | Tugas ASJ & AIJ</title>
+    <title>Profil Saya - Rayhan | Tugas ASJ & AIJ & TLJ</title>
     
     <link rel="stylesheet" href="style.css">
     
+    <style>
+        .tlj-content-wrapper h2 {
+            color: #007bff; /* Biru untuk judul utama TLJ */
+            border-left: 5px solid #007bff;
+            background-color: #e6f7ff;
+            padding: 8px 0 8px 15px;
+        }
+        .tlj-content-wrapper h3 {
+            color: #6c757d;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        .tlj-content-wrapper ol {
+            padding-left: 25px;
+            list-style-type: none;
+        }
+        .tlj-content-wrapper li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            counter-increment: list-counter;
+        }
+        .tlj-content-wrapper li::before {
+            content: counter(list-counter) ". ";
+            font-weight: bold;
+            color: #007bff;
+            margin-right: 10px;
+        }
+        .tlj-jawaban-benar {
+            color: #dc3545;
+            font-weight: bold;
+            background-color: #f8d7da;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+            display: inline-block;
+        }
+        .tlj-content-wrapper table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .tlj-content-wrapper th, .tlj-content-wrapper td {
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            text-align: left;
+        }
+        .tlj-content-wrapper th {
+            background-color: #007bff;
+            color: white;
+            text-transform: uppercase;
+        }
+        .tlj-content-wrapper tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .tlj-data-penting {
+            font-weight: bold;
+            color: #17a2b8;
+        }
+        .tlj-list-jawaban-esai {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+        .tlj-list-jawaban-esai li {
+            font-weight: 500;
+            color: #dc3545;
+            margin-bottom: 10px;
+        }
+        .tlj-list-jawaban-esai li::before {
+            content: '';
+        }
+    </style>
 </head>
 <body>
 
@@ -202,6 +275,105 @@
                                 <tr><td>5.</td><td>IP Address (Contoh)</td><td>192.168.3.1/26</td></tr>
                             </tbody>
                         </table>
+                    </div>
+                </details>
+                <hr>
+                
+                <details>
+                    <summary><h3>4. Soal Teknologi Layanan Jaringan (TLJ - VoIP/Softswitch) ➕</h3></summary>
+                    <div class="tlj-content-wrapper">
+                        <h2>A. Jawaban Pilihan Ganda (1-40)</h2>
+
+                        <h3>I. Softswitch, Firewall, dan Trixbox (No. 1-15)</h3>
+                        <ol>
+                            <li>Manakah pernyataan berikut yang benar mengenai kelebihan soft switch? <span class="tlj-jawaban-benar">b. Mudah diintegrasikan dengan perangkat keras</span></li>
+                            <li>Fungsi utama dari Firewall VoIP adalah... <span class="tlj-jawaban-benar">c. Mengontrol dan memonitor lalu lintas VoIP</span></li>
+                            <li>Risiko utama jika Firewall VoIP tidak dikonfigurasi dengan benar adalah... <span class="tlj-jawaban-benar">b. Potensi kebocoran data dan akses tidak sah</span></li>
+                            <li>Fungsi utama dari Trixbox dalam lingkungan server VoIP adalah... <span class="tlj-jawaban-benar">c. Menyediakan layanan VoIP</span></li>
+                            <li>Soft switch biasanya digunakan dalam lingkungan... <span class="tlj-jawaban-benar">b. Perusahaan besar</span></li>
+                            <li>Peran Softswitch dalam implementasi VoIP adalah... <span class="tlj-jawaban-benar">b. Mengelola panggilan suara melalui jaringan IP</span></li>
+                            <li>Bagaimana firewall VoIP melindungi dari phishing suara? <span class="tlj-jawaban-benar">c. Mendeteksi dan mencegah panggilan palsu</span></li>
+                            <li>Keuntungan utama menggunakan Trixbox dibanding PBX konvensional adalah... <span class="tlj-jawaban-benar">a. Lebih murah</span></li>
+                            <li>Kelebihan yang membuat soft switch umum digunakan adalah... <span class="tlj-jawaban-benar">c. Efisiensi biaya & manajemen panggilan</span></li>
+                            <li>Apa yang dimaksud dengan Trixbox? <span class="tlj-jawaban-benar">c. Platform telepon IP berbasis software</span></li>
+                            <li>Risiko keamanan VoIP tanpa firewall adalah... <span class="tlj-jawaban-benar">c. Pencurian data dan akses tidak sah</span></li>
+                            <li>Manfaat utama implementasi soft switch adalah... <span class="tlj-jawaban-benar">d. Menyederhanakan infrastruktur PBX</span></li>
+                            <li>Risiko VoIP tanpa proteksi firewall adalah... <span class="tlj-jawaban-benar">b. Kemungkinan serangan terhadap sistem VoIP</span></li>
+                            <li>Manfaat utama soft switch adalah... <span class="tlj-jawaban-benar">b. Skalabilitas dan fleksibilitas</span></li>
+                            <li>Bagaimana Trixbox membantu perusahaan dalam mengelola panggilan? <span class="tlj-jawaban-benar">b. Mengoptimalkan pembagian panggilan</span></li>
+                        </ol>
+                        
+                        <h3>II. Klasifikasi PBX dan Konsep VoIP Dasar (No. 16-34)</h3>
+                        <ol start="16">
+                            <li>Kurang fleksibel merupakan kekurangan dari... <span class="tlj-jawaban-benar">a. Traditional PBX</span></li>
+                            <li>PBX yang memerlukan instalasi dan pemeliharaan intensif adalah... <span class="tlj-jawaban-benar">a. Traditional PBX</span></li>
+                            <li>PBX yang menggunakan protokol IP untuk mengirimkan suara adalah... <span class="tlj-jawaban-benar">b. IP PBX</span></li>
+                            <li>PBX yang memerlukan instalasi & pemeliharaan intensif adalah... <span class="tlj-jawaban-benar">a. Traditional PBX</span></li>
+                            <li>VoIP PBX juga dikenal dengan nama... <span class="tlj-jawaban-benar">b. IP PBX</span></li>
+                            <li>PBX yang lebih hemat biaya karena memakai infrastruktur yang sudah ada... <span class="tlj-jawaban-benar">b. IP PBX</span></li>
+                            <li>Cloud PBX juga dikenal dengan nama... <span class="tlj-jawaban-benar">c. Hosted PBX</span></li>
+                            <li>PBX yang cocok untuk bisnis kecil-menengah tanpa biaya awal besar... <span class="tlj-jawaban-benar">c. Hosted PBX</span></li>
+                            <li>PBX yang tidak memerlukan perangkat keras fisik lagi adalah... <span class="tlj-jawaban-benar">c. Hosted PBX</span></li>
+                            <li>Dengan VoIP, biaya lebih... untuk sambungan langsung jarak jauh. <span class="tlj-jawaban-benar">e. off</span></li>
+                            <li>Generasi lanjutan VoIP adalah... <span class="tlj-jawaban-benar">d. NGN</span></li>
+                            <li>VoIP adalah Voice Internet Protocol. (Berkaitan dengan...) <span class="tlj-jawaban-benar">e. data digital</span></li>
+                            <li>Kualitas suara VoIP menurun karena kualitas layanan yang... <span class="tlj-jawaban-benar">b. rendah</span></li>
+                            <li>Teknik kompresi membuat suara hanya butuh sekitar... kbps. <span class="tlj-jawaban-benar">a. 8</span></li>
+                            <li>Dengan adanya... jaringan VoIP bisa disambungkan ke PABX kantor. <span class="tlj-jawaban-benar">d. gateway</span></li>
+                            <li>Kualitas suara VoIP tidak sejernih karena bandwidth kecil (disebabkan)... <span class="tlj-jawaban-benar">b. congestion</span></li>
+                            <li>Asterisk adalah software... yang berjalan di Linux. <span class="tlj-jawaban-benar">a. open source</span></li>
+                            <li>Instalasi paket Asterisk membutuhkan keping DVD ke.... <span class="tlj-jawaban-benar">a. 1</span></li>
+                            <li>Perintah untuk menginstal Asterisk adalah apt-get... asterisk <span class="tlj-jawaban-benar">e. install</span></li>
+                        </ol>
+
+                        <h3>III. Konfigurasi Ekstensi (No. 35-40)</h3>
+                        <ol start="35">
+                            <li>Nomor telepon tkj1 adalah... <span class="tlj-jawaban-benar">b. 123</span></li>
+                            <li>Nomor telepon tkj2 adalah... <span class="tlj-jawaban-benar">a. 124</span></li>
+                            <li>Parameter yang menunjukkan kata sandi adalah... <span class="tlj-jawaban-benar">a. secret</span></li>
+                            <li>Kata sandi untuk tkj1 adalah... <span class="tlj-jawaban-benar">d. smkdt1</span></li>
+                            <li>Kata sandi untuk tkj2 adalah... <span class="tlj-jawaban-benar">e. smkdt2</span></li>
+                            <li>Jika PC memiliki webcam, maka user bisa melakukan... <span class="tlj-jawaban-benar">d. video call</span></li>
+                        </ol>
+
+                        <h2>B. Jawaban Esai (1-5)</h2>
+                        <p>Soal esai didasarkan pada potongan konfigurasi ekstensi VoIP (`sip.conf` pada server Asterisk).</p>
+                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Parameter Konfigurasi</th>
+                                    <th>Ekstensi **123** (TKJ1)</th>
+                                    <th>Ekstensi **124** (TKJ2)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Nomor Ekstensi</td>
+                                    <td class="tlj-data-penting">**[123]**</td>
+                                    <td class="tlj-data-penting">**[124]**</td>
+                                </tr>
+                                <tr>
+                                    <td>Username</td>
+                                    <td>tkj1</td>
+                                    <td>tkj2</td>
+                                </tr>
+                                <tr>
+                                    <td>Password/Secret</td>
+                                    <td class="tlj-data-penting">**smkdt1**</td>
+                                    <td class="tlj-data-penting">**smkdt2**</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>Jawaban Lengkap Esai (1-5):</h3>
+                        <ul class="tlj-list-jawaban-esai">
+                            <li>**1. Berapa Nomor Telp dari TKJ1?** Jawaban: **123**</li>
+                            <li>**2. Berapa Nomor Telp dari TKJ2?** Jawaban: **124**</li>
+                            <li>**3. Apa nama Password dari TKJ1?** Jawaban: **smkdt1**</li>
+                            <li>**4. Apa nama Password dari TKJ2?** Jawaban: **smkdt2**</li>
+                            <li>**5. Apa nama username dari nomor ekstention 123?** Jawaban: **tkj1**</li>
+                        </ul>
                     </div>
                 </details>
                 <hr>
